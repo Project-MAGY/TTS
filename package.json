@@ -1,0 +1,23 @@
+{
+  "name": "TTS",
+  "version": "1.0.0",
+  "description": "MAGY text-to-speech engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "TTS"
+  ],
+  "author": "Eason Chang",
+  "license": "ISC",
+  "dependencies": {
+    "es6-promise": "^4.1.1",
+    "google-tts-api": "0.0.2",
+    "shelljs": "^0.7.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Project-MAGY/TTS"
+  }
+}
