@@ -73,6 +73,6 @@ googleTTS(text)
   console.error(err.stack);
 })
 .then(function () {
-    shell.exec("afplay result.mp3");
+    shell.exec("afplay result.mp3 -q 1");
     shell.rm("result.mp3");
 });
