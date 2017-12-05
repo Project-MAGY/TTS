@@ -8,6 +8,7 @@ var https = require('https');
 var urlParse  = require('url').parse;
 var googleTTS = require('google-tts-api');
 var shell = require('shelljs');
+var parseArgs = require('minimist');
 
 function downloadFile (url, dest) {
   return new Promise(function (resolve, reject) {
@@ -49,15 +50,26 @@ function downloadFile (url, dest) {
 }
 
 // start
+var argv = parseArgs(process.argv.slice(2));
+
+
 var text = "";
-
-for(var i = 2; i < process.argv.length; ++i){
-    text += (i == 2 ? "" : " ") + process.argv[i];
+for(var i = 0; i < argv._.length; ++i){
+    text += (i == 0 ? "" : " ") + argv._[i];
 }
-
 if(text === "") text = "Hello";
 
-googleTTS(text)
+
+var lang = "";
+if (typeof argv.l !== 'undefined') 
+    lang = argv.l;
+else if (typeof argv.lang !== 'undefined') 
+    lang = argv.lang;
+else 
+    lang = "en";
+
+
+googleTTS(text=text, lang=lang)
 .then(function (url) {
   //console.log(url); // https://translate.google.com/translate_tts?...
 

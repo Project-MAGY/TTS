@@ -14,6 +14,7 @@
   "dependencies": {
     "es6-promise": "^4.1.1",
     "google-tts-api": "0.0.2",
+    "minimist": "^1.2.0",
     "shelljs": "^0.7.8"
   },
   "repository": {
