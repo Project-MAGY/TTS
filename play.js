@@ -9,6 +9,7 @@ var urlParse  = require('url').parse;
 var googleTTS = require('google-tts-api');
 var shell = require('shelljs');
 var parseArgs = require('minimist');
+var os = require('os');
 
 function downloadFile (url, dest) {
   return new Promise(function (resolve, reject) {
@@ -85,6 +86,10 @@ googleTTS(text=text, lang=lang)
   console.error(err.stack);
 })
 .then(function () {
-    shell.exec("afplay result.mp3 -q 1");
+    console.log(os.platform());
+    if(os.platform() == 'darwin') // For MacOS
+        shell.exec("afplay result.mp3 -q 1");
+    else if(os.platform() == 'linux') // For raspberryPi
+	shell.exec("omxplayer result.mp3");
     shell.rm("result.mp3");
 });
